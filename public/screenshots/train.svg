@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" fill="none">
+  <rect width="390" height="844" fill="#030712"/>
+  <text x="24" y="56" fill="#94A3B8" font-family="system-ui,sans-serif" font-size="12">SÉANCE EN COURS</text>
+  <text x="24" y="88" fill="#F0F2F5" font-family="system-ui,sans-serif" font-size="24" font-weight="700">Tractions</text>
+  <text x="24" y="116" fill="#44D9FF" font-family="system-ui,sans-serif" font-size="14">Série 3 / 4</text>
+  <rect x="24" y="140" width="342" height="8" rx="4" fill="#081120"/>
+  <rect x="24" y="140" width="255" height="8" rx="4" fill="#44D9FF"/>
+  <rect x="24" y="180" width="342" height="200" rx="24" fill="#081120" stroke="#44D9FF22"/>
+  <text x="44" y="220" fill="#F0F2F5" font-family="system-ui,sans-serif" font-size="48" font-weight="700">8</text>
+  <text x="100" y="220" fill="#94A3B8" font-family="system-ui,sans-serif" font-size="24">/ 10 reps</text>
+  <rect x="44" y="260" width="140" height="44" rx="22" fill="#44D9FF"/>
+  <text x="88" y="288" fill="#030712" font-family="system-ui,sans-serif" font-size="14" font-weight="700">Valider</text>
+  <rect x="196" y="260" width="140" height="44" rx="22" fill="#081120" stroke="#ffffff15"/>
+  <text x="248" y="288" fill="#F0F2F5" font-family="system-ui,sans-serif" font-size="14">Skip</text>
+  <text x="24" y="420" fill="#94A3B8" font-family="system-ui,sans-serif" font-size="12" font-weight="600">COACH IA</text>
+  <rect x="24" y="436" width="342" height="100" rx="18" fill="#081120" stroke="#7C5CFF44"/>
+  <text x="44" y="472" fill="#7C5CFF" font-family="system-ui,sans-serif" font-size="11" font-weight="600">ADAPTATION</text>
+  <text x="44" y="500" fill="#F0F2F5" font-family="system-ui,sans-serif" font-size="14">Fatigue détectée  volume -10% sur la prochaine série.</text>
+  <rect x="24" y="560" width="165" height="80" rx="16" fill="#081120"/>
+  <text x="44" y="592" fill="#8CF24F" font-family="system-ui,sans-serif" font-size="18" font-weight="700">72%</text>
+  <text x="44" y="616" fill="#94A3B8" font-family="system-ui,sans-serif" font-size="11">Récupération</text>
+  <rect x="201" y="560" width="165" height="80" rx="16" fill="#081120"/>
+  <text x="221" y="592" fill="#44D9FF" font-family="system-ui,sans-serif" font-size="18" font-weight="700">Niv. 12</text>
+  <text x="221" y="616" fill="#94A3B8" font-family="system-ui,sans-serif" font-size="11">Ajusté</text>
+  <rect x="0" y="780" width="390" height="64" fill="#081120"/>
+  <circle cx="234" cy="812" r="5" fill="#44D9FF"/>
+</svg>

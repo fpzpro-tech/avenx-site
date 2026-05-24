@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-avenx-gold: #e8b923;
-  --color-avenx-gold-light: #f5d547;
-  --color-avenx-gold-dark: #c9a01e;
-  --color-avenx-black: #050508;
-  --color-avenx-charcoal: #0f1014;
-  --color-avenx-slate: #1a1c22;
-  --color-avenx-mist: #8b9099;
-  --color-avenx-snow: #f4f5f7;
+  --color-avenx-bg: #030712;
+  --color-avenx-card: #081120;
+  --color-avenx-primary: #44d9ff;
+  --color-avenx-secondary: #6ee7ff;
+  --color-avenx-green: #8cf24f;
+  --color-avenx-purple: #7c5cff;
+  --color-avenx-snow: #f0f2f5;
+  --color-avenx-muted: #94a3b8;
   --font-sans: var(--font-geist-sans);
 }
 
@@ -17,22 +17,21 @@ html {
 }
 
 body {
-  background-color: var(--color-avenx-black);
+  background-color: var(--color-avenx-bg);
   color: var(--color-avenx-snow);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
 ::selection {
-  background-color: color-mix(in srgb, var(--color-avenx-gold) 35%, transparent);
+  background-color: color-mix(in srgb, var(--color-avenx-primary) 35%, transparent);
   color: var(--color-avenx-snow);
 }
 
-.text-gradient-gold {
+.text-gradient-cyan {
   background: linear-gradient(
-    90deg,
-    var(--color-avenx-gold-light),
-    var(--color-avenx-gold),
-    var(--color-avenx-gold-dark)
+    135deg,
+    var(--color-avenx-secondary),
+    var(--color-avenx-primary)
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -40,16 +39,38 @@ body {
 }
 
 .bg-hero-glow {
-  background-image: radial-gradient(
-    ellipse 80% 50% at 50% -20%,
-    color-mix(in srgb, var(--color-avenx-gold) 14%, transparent),
-    transparent
-  );
+  background-image:
+    radial-gradient(
+      ellipse 70% 55% at 15% 0%,
+      color-mix(in srgb, var(--color-avenx-primary) 12%, transparent),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 85% 10%,
+      color-mix(in srgb, var(--color-avenx-purple) 8%, transparent),
+      transparent 50%
+    );
 }
 
 .bg-grid-pattern {
   background-image:
-    linear-gradient(color-mix(in srgb, white 3%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, white 3%, transparent) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(color-mix(in srgb, white 2.5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, white 2.5%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.glass-card {
+  background: color-mix(in srgb, var(--color-avenx-card) 85%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glow-cyan {
+  box-shadow:
+    0 0 60px color-mix(in srgb, var(--color-avenx-primary) 18%, transparent),
+    0 24px 48px color-mix(in srgb, black 45%, transparent);
+}
+
+.glow-cyan-sm {
+  box-shadow: 0 0 32px color-mix(in srgb, var(--color-avenx-primary) 14%, transparent);
 }

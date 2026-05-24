@@ -13,20 +13,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AVENX — Ton coach calisthenics intelligent",
+  title: "AVENX — Trouve ton spot. Progresse. Reviens demain.",
   description:
-    "Des entraînements au poids du corps adaptés à ton niveau, ton matériel et ta progression. Calisthenics et street workout avec IA adaptative.",
+    "Découvre les spots street workout autour de toi, entraîne-toi avec des séances adaptées et progresse avec un coach IA qui apprend de ton niveau.",
   keywords: [
     "AVENX",
-    "calisthenics",
     "street workout",
+    "calisthenics",
+    "spots",
     "coach IA",
-    "entraînement poids du corps",
+    "communauté fitness",
   ],
   openGraph: {
-    title: "AVENX — Ton coach calisthenics intelligent",
+    title: "AVENX — Trouve ton spot. Progresse. Reviens demain.",
     description:
-      "Programmes adaptés, progression intelligente, entraînements sans salle.",
+      "Spots, séances adaptées et communauté street workout — le compagnon premium pour progresser dehors.",
     type: "website",
     locale: "fr_FR",
     siteName: "AVENX",
@@ -40,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="min-h-screen antialiased">{children}</body>
+      <body className="min-h-screen bg-avenx-bg antialiased">{children}</body>
     </html>
   );
 }

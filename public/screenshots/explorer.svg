@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" fill="none">
+  <rect width="390" height="844" fill="#030712"/>
+  <rect x="0" y="0" width="390" height="700" fill="#0a1628"/>
+  <path d="M0 200 Q100 150 200 220 T390 180 L390 700 L0 700Z" fill="#081120" opacity="0.6"/>
+  <path d="M50 400 Q150 350 250 420 T390 380" stroke="#1e3a5f" stroke-width="2" fill="none"/>
+  <circle cx="120" cy="320" r="28" fill="#44D9FF22" stroke="#44D9FF" stroke-width="2"/>
+  <circle cx="120" cy="320" r="8" fill="#44D9FF"/>
+  <circle cx="240" cy="450" r="22" fill="#8CF24F22" stroke="#8CF24F" stroke-width="2"/>
+  <circle cx="240" cy="450" r="6" fill="#8CF24F"/>
+  <circle cx="300" cy="280" r="18" fill="#7C5CFF22" stroke="#7C5CFF" stroke-width="2"/>
+  <circle cx="300" cy="280" r="5" fill="#7C5CFF"/>
+  <rect x="16" y="56" width="358" height="44" rx="22" fill="#081120EE" stroke="#ffffff15"/>
+  <text x="52" y="84" fill="#94A3B8" font-family="system-ui,sans-serif" font-size="14">Rechercher un spot...</text>
+  <rect x="16" y="620" width="358" height="160" rx="24" fill="#081120" stroke="#44D9FF33"/>
+  <text x="36" y="656" fill="#44D9FF" font-family="system-ui,sans-serif" font-size="11" font-weight="600">SPOT VALIDÉ</text>
+  <text x="36" y="686" fill="#F0F2F5" font-family="system-ui,sans-serif" font-size="20" font-weight="700">Parc de la Villette</text>
+  <text x="36" y="712" fill="#94A3B8" font-family="system-ui,sans-serif" font-size="13">Barres · Anneaux · 23 avis</text>
+  <rect x="36" y="728" width="100" height="32" rx="16" fill="#44D9FF"/>
+  <text x="58" y="749" fill="#030712" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Y aller</text>
+  <rect x="0" y="780" width="390" height="64" fill="#081120"/>
+  <circle cx="156" cy="812" r="5" fill="#44D9FF"/>
+</svg>

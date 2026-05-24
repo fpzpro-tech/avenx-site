@@ -27,7 +27,7 @@ function SocialSectionComponent() {
           <div className="order-2 lg:order-1 relative flex justify-center lg:justify-start">
             <div className="absolute -inset-8 rounded-full bg-avenx-primary/8 blur-3xl" />
             <ScreenshotPhone
-              src="/screenshots/social.svg"
+              src="/screenshots/social.png"
               alt="Écran Social — communauté et classements"
               rotation={5}
             />

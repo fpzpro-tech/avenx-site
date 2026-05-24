@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 import { memo, useRef } from "react";
+import { ScreenshotPhone } from "@/components/ScreenshotPhone";
 import { FadeInView } from "@/components/ui/FadeInView";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
@@ -48,19 +48,16 @@ function SpotSectionComponent() {
         </FadeInView>
 
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <motion.div style={reduceMotion ? undefined : { y: mapY }} className="relative">
-            <div className="glow-cyan-sm overflow-hidden rounded-3xl border border-white/10">
-              <div className="relative aspect-[720/560] w-full">
-                <Image
-                  src="/screenshots/map.svg"
-                  alt="Carte AVENX — spots street workout autour de toi"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                  loading="lazy"
-                />
-              </div>
-            </div>
+          <motion.div
+            style={reduceMotion ? undefined : { y: mapY }}
+            className="relative flex justify-center lg:justify-start"
+          >
+            <ScreenshotPhone
+              src="/screenshots/explorer.png"
+              alt="Écran Explorer — spots street workout autour de toi"
+              rotation={-3}
+              wide
+            />
           </motion.div>
 
           <motion.div

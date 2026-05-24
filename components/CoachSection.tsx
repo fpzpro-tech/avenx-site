@@ -79,7 +79,7 @@ function CoachSectionComponent() {
           <div className="relative flex justify-center lg:justify-end">
             <div className="absolute -inset-8 rounded-full bg-avenx-purple/10 blur-3xl" />
             <ScreenshotPhone
-              src="/screenshots/train.svg"
+              src="/screenshots/train.png"
               alt="Écran Train — coach IA adaptatif"
               rotation={-4}
               className="relative"

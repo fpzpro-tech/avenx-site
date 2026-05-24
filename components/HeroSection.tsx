@@ -8,35 +8,49 @@ import { fadeUp } from "@/lib/motion";
 
 const heroPhones = [
   {
-    src: "/screenshots/explorer.svg",
+    src: "/screenshots/explorer.png",
     alt: "Écran Explorer — carte des spots street workout",
-    rotation: -8,
-    offsetY: 24,
-    offsetX: -20,
+    rotation: -10,
+    offsetY: 28,
+    offsetX: -24,
     zIndex: 1,
-    scale: 0.92,
+    scale: 0.9,
     floatDelay: 0.4,
+    className: "absolute left-0 top-10 hidden sm:block",
   },
   {
-    src: "/screenshots/home.svg",
+    src: "/screenshots/home.png",
     alt: "Écran Home — tableau de bord AVENX",
     rotation: 0,
     offsetY: 0,
     offsetX: 0,
-    zIndex: 3,
+    zIndex: 4,
     scale: 1,
     floatDelay: 0,
     priority: true,
+    className: "absolute left-1/2 top-0 -translate-x-1/2",
   },
   {
-    src: "/screenshots/train.svg",
+    src: "/screenshots/train.png",
     alt: "Écran Train — séance guidée",
-    rotation: 7,
-    offsetY: 32,
-    offsetX: 20,
+    rotation: 8,
+    offsetY: 36,
+    offsetX: 24,
     zIndex: 2,
-    scale: 0.94,
+    scale: 0.92,
     floatDelay: 0.8,
+    className: "absolute right-0 top-8 hidden sm:block",
+  },
+  {
+    src: "/screenshots/social.png",
+    alt: "Écran Social — communauté et classements",
+    rotation: 12,
+    offsetY: 48,
+    offsetX: 8,
+    zIndex: 1,
+    scale: 0.86,
+    floatDelay: 1.2,
+    className: "absolute right-4 top-24 hidden lg:block",
   },
 ] as const;
 
@@ -111,10 +125,10 @@ function HeroSectionComponent() {
             </motion.div>
           </motion.div>
 
-          <div className="relative mx-auto h-[400px] w-full max-w-[340px] sm:h-[440px] sm:max-w-[380px] lg:max-w-none">
+          <div className="relative mx-auto h-[400px] w-full max-w-[300px] sm:h-[440px] sm:max-w-[420px] lg:max-w-[480px]">
             <div className="absolute inset-0 rounded-full bg-avenx-primary/10 blur-3xl" />
             <div className="relative mx-auto h-full w-full">
-              {heroPhones.map((phone, index) => (
+              {heroPhones.map((phone) => (
                 <ScreenshotPhone
                   key={phone.src}
                   src={phone.src}
@@ -126,13 +140,7 @@ function HeroSectionComponent() {
                   scale={phone.scale}
                   floatDelay={phone.floatDelay}
                   priority={"priority" in phone ? phone.priority : false}
-                  className={
-                    index === 0
-                      ? "absolute left-0 top-8"
-                      : index === 1
-                        ? "absolute left-1/2 top-0 -translate-x-1/2"
-                        : "absolute right-0 top-10"
-                  }
+                  className={phone.className}
                 />
               ))}
             </div>

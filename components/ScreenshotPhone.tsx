@@ -10,6 +10,7 @@ export type ScreenshotPhoneProps = {
   alt: string;
   priority?: boolean;
   className?: string;
+  wide?: boolean;
   rotation?: number;
   offsetY?: number;
   offsetX?: number;
@@ -23,6 +24,7 @@ function ScreenshotPhoneComponent({
   alt,
   priority = false,
   className = "",
+  wide = false,
   rotation = 0,
   offsetY = 0,
   offsetX = 0,
@@ -31,10 +33,13 @@ function ScreenshotPhoneComponent({
   floatDelay = 0,
 }: ScreenshotPhoneProps) {
   const reduceMotion = useReducedMotion();
+  const widthClass = wide
+    ? "w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[320px]"
+    : "w-[min(100%,200px)] sm:w-[210px] lg:w-[220px]";
 
   return (
     <motion.div
-      className={`relative w-[min(100%,200px)] sm:w-[210px] lg:w-[220px] ${className}`}
+      className={`relative ${widthClass} ${className}`}
       style={{
         zIndex,
         rotate: rotation,
@@ -52,7 +57,7 @@ function ScreenshotPhoneComponent({
             alt={alt}
             fill
             sizes="(max-width: 640px) 180px, 220px"
-            className="object-cover object-top"
+            className="object-cover object-center"
             priority={priority}
             loading={priority ? undefined : "lazy"}
           />

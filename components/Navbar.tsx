@@ -2,6 +2,7 @@
 
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { memo, useState } from "react";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 
 const navLinks = [
   { href: "#decouvrir", label: "Découvrir" },
@@ -30,11 +31,8 @@ function NavbarComponent() {
       }}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <a href="#" className="group inline-flex items-center gap-2.5" aria-label="AVENX — Accueil">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-avenx-primary/30 bg-avenx-primary/10 transition group-hover:border-avenx-primary/50 group-hover:bg-avenx-primary/15">
-            <span className="text-sm font-bold text-avenx-primary">A</span>
-          </span>
-          <span className="text-base font-semibold tracking-[0.22em] text-avenx-snow">AVENX</span>
+        <a href="#" className="group inline-flex items-center" aria-label="AVENX — Accueil">
+          <BrandLogo priority />
         </a>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Navigation principale">

@@ -9,18 +9,7 @@ import { fadeUp } from "@/lib/motion";
 
 const heroPhones = [
   {
-    src: SCREENSHOTS.explorer,
-    alt: "Explorer les spots street workout dans AVENX",
-    rotation: -10,
-    offsetY: 28,
-    offsetX: -24,
-    zIndex: 1,
-    scale: 0.9,
-    floatDelay: 0.4,
-    className: "absolute left-0 top-10 hidden sm:block",
-  },
-  {
-    src: SCREENSHOTS.map,
+    src: "/screenshots/map.png",
     alt: "Carte des spots street workout dans AVENX",
     rotation: 0,
     offsetY: 0,
@@ -30,6 +19,17 @@ const heroPhones = [
     floatDelay: 0,
     priority: true,
     className: "absolute left-1/2 top-0 -translate-x-1/2",
+  },
+  {
+    src: SCREENSHOTS.explorer,
+    alt: "Explorer les spots street workout dans AVENX",
+    rotation: -10,
+    offsetY: 28,
+    offsetX: -24,
+    zIndex: 1,
+    scale: 0.9,
+    floatDelay: 0.4,
+    className: "absolute left-0 top-10 hidden sm:block",
   },
   {
     src: SCREENSHOTS.train,
@@ -129,9 +129,9 @@ function HeroSectionComponent() {
           <div className="relative mx-auto h-[400px] w-full max-w-[300px] sm:h-[440px] sm:max-w-[420px] lg:max-w-[480px]">
             <div className="absolute inset-0 rounded-full bg-avenx-primary/10 blur-3xl" />
             <div className="relative mx-auto h-full w-full">
-              {heroPhones.map((phone) => (
+              {heroPhones.map((phone, index) => (
                 <ScreenshotPhone
-                  key={phone.src}
+                  key={`hero-phone-${index}`}
                   src={phone.src}
                   alt={phone.alt}
                   rotation={phone.rotation}

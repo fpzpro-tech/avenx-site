@@ -4,62 +4,13 @@ import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { memo } from "react";
 import { ScreenshotPhone } from "@/components/ScreenshotPhone";
-import { SCREENSHOTS } from "@/lib/assets";
 import { fadeUp } from "@/lib/motion";
-
-const heroPhones = [
-  {
-    src: "/screenshots/map.png",
-    alt: "Carte des spots street workout dans AVENX",
-    rotation: 0,
-    offsetY: 0,
-    offsetX: 0,
-    zIndex: 4,
-    scale: 1,
-    floatDelay: 0,
-    priority: true,
-    className: "absolute left-1/2 top-0 -translate-x-1/2",
-  },
-  {
-    src: SCREENSHOTS.explorer,
-    alt: "Explorer les spots street workout dans AVENX",
-    rotation: -10,
-    offsetY: 28,
-    offsetX: -24,
-    zIndex: 1,
-    scale: 0.9,
-    floatDelay: 0.4,
-    className: "absolute left-0 top-10 hidden sm:block",
-  },
-  {
-    src: SCREENSHOTS.train,
-    alt: "Séance du jour et coach IA dans AVENX",
-    rotation: 8,
-    offsetY: 36,
-    offsetX: 24,
-    zIndex: 2,
-    scale: 0.92,
-    floatDelay: 0.8,
-    className: "absolute right-0 top-8 hidden sm:block",
-  },
-  {
-    src: SCREENSHOTS.social,
-    alt: "Communauté et classements dans AVENX",
-    rotation: 12,
-    offsetY: 48,
-    offsetX: 8,
-    zIndex: 1,
-    scale: 0.86,
-    floatDelay: 1.2,
-    className: "absolute right-4 top-24 hidden lg:block",
-  },
-] as const;
 
 function HeroSectionComponent() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="decouvrir" className="relative scroll-mt-24 overflow-hidden bg-hero-glow pt-28 sm:pt-32">
+    <section id="decouvrir" className="relative scroll-mt-24 overflow-x-hidden bg-hero-glow pt-28 sm:pt-32">
       <div className="absolute inset-0 bg-grid-pattern opacity-20" />
       <div className="relative mx-auto max-w-6xl px-4 pb-20 sm:px-6 sm:pb-28 lg:px-8 lg:pb-32">
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-12">
@@ -126,25 +77,15 @@ function HeroSectionComponent() {
             </motion.div>
           </motion.div>
 
-          <div className="relative mx-auto h-[400px] w-full max-w-[300px] sm:h-[440px] sm:max-w-[420px] lg:max-w-[480px]">
-            <div className="absolute inset-0 rounded-full bg-avenx-primary/10 blur-3xl" />
-            <div className="relative mx-auto h-full w-full">
-              {heroPhones.map((phone, index) => (
-                <ScreenshotPhone
-                  key={`hero-phone-${index}`}
-                  src={phone.src}
-                  alt={phone.alt}
-                  rotation={phone.rotation}
-                  offsetY={phone.offsetY}
-                  offsetX={phone.offsetX}
-                  zIndex={phone.zIndex}
-                  scale={phone.scale}
-                  floatDelay={phone.floatDelay}
-                  priority={"priority" in phone ? phone.priority : false}
-                  className={phone.className}
-                />
-              ))}
-            </div>
+          <div className="relative flex w-full justify-center px-2 py-4 sm:px-4 lg:justify-end lg:py-6">
+            <div className="pointer-events-none absolute left-1/2 top-1/2 size-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-avenx-primary/10 blur-3xl lg:left-auto lg:right-12 lg:translate-x-0" />
+            <ScreenshotPhone
+              src="/screenshots/map.png"
+              alt="Carte des spots street workout dans AVENX"
+              rotation={-6}
+              priority
+              className="relative"
+            />
           </div>
         </div>
       </div>

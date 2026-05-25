@@ -23,58 +23,43 @@ function HeroSectionComponent() {
               variants={fadeUp}
               className="mb-5 inline-flex items-center gap-2 rounded-full border border-avenx-primary/25 bg-avenx-primary/8 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-avenx-primary"
             >
-              Street workout · Coach IA · Communauté
+              Bêta fondateurs · Places limitées
             </motion.p>
 
             <motion.h1
               variants={fadeUp}
               className="text-4xl font-bold leading-[1.05] tracking-tight text-avenx-snow sm:text-5xl lg:text-[3.35rem]"
             >
-              Trouve ton spot.
-              <br />
-              <span className="text-gradient-cyan">Progresse.</span>
-              <br />
-              Reviens demain.
+              Deviens un des premiers{" "}
+              <span className="text-gradient-cyan">fondateurs AVENX</span>
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
               className="mt-6 max-w-lg text-base leading-relaxed text-avenx-muted sm:text-lg"
             >
-              Découvre les spots street workout autour de toi, entraîne-toi avec des séances adaptées
-              et progresse avec un coach IA qui apprend réellement de ton niveau.
+              Rejoins les premiers athlètes qui construisent le futur du street workout. Accès bêta
+              privé, statut fondateur et avantages à vie.
             </motion.p>
 
             <motion.div variants={fadeUp} className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
-                href="#spots"
+                href="mailto:beta@avenx.app?subject=B%C3%AAta%20fondateur%20AVENX"
                 className="inline-flex items-center justify-center rounded-full bg-avenx-primary px-7 py-3.5 text-sm font-semibold text-avenx-bg transition hover:bg-avenx-secondary"
               >
-                Explorer AVENX
+                Rejoindre la bêta
               </Link>
               <Link
-                href="#telecharger"
+                href="#application"
                 className="inline-flex items-center justify-center rounded-full border border-white/15 bg-avenx-card/60 px-7 py-3.5 text-sm font-semibold text-avenx-snow transition hover:border-avenx-primary/40 hover:bg-avenx-card"
               >
-                Télécharger
+                Voir l&apos;application
               </Link>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="mt-8 flex items-center gap-3">
-              <div className="flex -space-x-2">
-                {["M", "L", "K", "S"].map((initial) => (
-                  <span
-                    key={initial}
-                    className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-avenx-bg bg-avenx-card text-[10px] font-bold text-avenx-primary"
-                  >
-                    {initial}
-                  </span>
-                ))}
-              </div>
-              <p className="text-sm text-avenx-muted">
-                <span className="font-semibold text-avenx-snow">+500 sportifs</span> en bêta
-              </p>
-            </motion.div>
+            <motion.p variants={fadeUp} className="mt-5 text-sm font-medium text-avenx-green">
+              Plus que 100 places fondateurs
+            </motion.p>
           </motion.div>
 
           <div className="relative flex w-full justify-center px-2 py-4 sm:px-4 lg:justify-end lg:py-6">

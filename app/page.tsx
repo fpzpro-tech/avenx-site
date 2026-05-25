@@ -1,6 +1,7 @@
 import { CTASection } from "@/components/CTASection";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { CoachSection } from "@/components/CoachSection";
+import { FounderSection } from "@/components/FounderSection";
 import { FeatureGrid } from "@/components/FeatureGrid";
 import { FutureSection } from "@/components/FutureSection";
 import { HeroSection } from "@/components/HeroSection";
@@ -15,6 +16,7 @@ export default function Home() {
 
       <main>
         <HeroSection />
+        <FounderSection />
         <FeatureGrid />
         <SpotSection />
         <CoachSection />

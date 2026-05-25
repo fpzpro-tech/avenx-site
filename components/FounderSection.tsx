@@ -5,38 +5,38 @@ import { memo } from "react";
 import { FadeInView } from "@/components/ui/FadeInView";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
-const features = [
+const founderBenefits = [
   {
-    emoji: "📍",
-    title: "Trouve des spots",
-    description: "Découvre les spots street workout autour de toi.",
+    emoji: "🏅",
+    title: "Badge fondateur à vie",
+    description: "Un statut exclusif réservé aux premiers athlètes AVENX.",
+  },
+  {
+    emoji: "🚀",
+    title: "Accès avant lancement public",
+    description: "Teste l'app en avant-première avant tout le monde.",
+  },
+  {
+    emoji: "💡",
+    title: "Influence les futures fonctionnalités",
+    description: "Ton feedback façonne la roadmap produit.",
   },
   {
     emoji: "🤖",
-    title: "Coach IA réel",
-    description: "Programme adapté selon fatigue, récupération et progression.",
-  },
-  {
-    emoji: "🏆",
-    title: "Progression addictive",
-    description: "XP, niveaux, badges et objectifs qui te font revenir.",
-  },
-  {
-    emoji: "👥",
-    title: "Communauté",
-    description: "Défis, classements, amis et activités partagées.",
+    title: "Accès prioritaire Coach IA",
+    description: "Sois parmi les premiers à profiter du coach adaptatif.",
   },
 ] as const;
 
-function FeatureGridComponent() {
+function FounderSectionComponent() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="application" className="scroll-mt-24 border-t border-white/5 py-20 sm:py-28">
+    <section id="fondateurs" className="scroll-mt-24 border-t border-white/5 bg-avenx-card/30 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <FadeInView className="mx-auto max-w-2xl text-center">
           <h2 className="text-2xl font-bold tracking-tight text-avenx-snow sm:text-3xl lg:text-4xl">
-            Pourquoi AVENX est différent
+            Pourquoi rejoindre maintenant ?
           </h2>
         </FadeInView>
 
@@ -47,17 +47,17 @@ function FeatureGridComponent() {
           viewport={{ once: true, margin: "-80px" }}
           variants={staggerContainer}
         >
-          {features.map((feature) => (
+          {founderBenefits.map((benefit) => (
             <motion.article
-              key={feature.title}
+              key={benefit.title}
               variants={fadeUp}
               className="group rounded-2xl border border-white/5 bg-avenx-card p-6 transition hover:border-avenx-primary/25 hover:glow-cyan-sm sm:p-7"
             >
               <span className="text-2xl" role="img" aria-hidden>
-                {feature.emoji}
+                {benefit.emoji}
               </span>
-              <h3 className="mt-4 text-lg font-semibold text-avenx-snow">{feature.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-avenx-muted">{feature.description}</p>
+              <h3 className="mt-4 text-lg font-semibold text-avenx-snow">{benefit.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-avenx-muted">{benefit.description}</p>
             </motion.article>
           ))}
         </motion.div>
@@ -66,4 +66,4 @@ function FeatureGridComponent() {
   );
 }
 
-export const FeatureGrid = memo(FeatureGridComponent);
+export const FounderSection = memo(FounderSectionComponent);

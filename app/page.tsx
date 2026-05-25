@@ -1,3 +1,4 @@
+import { BetaContactSection } from "@/components/BetaContactSection";
 import { CTASection } from "@/components/CTASection";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { CoachSection } from "@/components/CoachSection";
@@ -23,6 +24,7 @@ export default function Home() {
         <SocialSection />
         <FutureSection />
         <CTASection />
+        <BetaContactSection />
       </main>
 
       <footer className="border-t border-white/5 bg-avenx-card/40">

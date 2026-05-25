@@ -4,12 +4,13 @@ import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { memo } from "react";
 import { ScreenshotPhone } from "@/components/ScreenshotPhone";
+import { SCREENSHOTS } from "@/lib/assets";
 import { fadeUp } from "@/lib/motion";
 
 const heroPhones = [
   {
-    src: "/screenshots/explorer.png",
-    alt: "Écran Explorer — carte des spots street workout",
+    src: SCREENSHOTS.explorer,
+    alt: "Explorer les spots street workout dans AVENX",
     rotation: -10,
     offsetY: 28,
     offsetX: -24,
@@ -19,8 +20,8 @@ const heroPhones = [
     className: "absolute left-0 top-10 hidden sm:block",
   },
   {
-    src: "/screenshots/home.png",
-    alt: "Écran Home — tableau de bord AVENX",
+    src: SCREENSHOTS.map,
+    alt: "Carte des spots street workout dans AVENX",
     rotation: 0,
     offsetY: 0,
     offsetX: 0,
@@ -31,8 +32,8 @@ const heroPhones = [
     className: "absolute left-1/2 top-0 -translate-x-1/2",
   },
   {
-    src: "/screenshots/train.png",
-    alt: "Écran Train — séance guidée",
+    src: SCREENSHOTS.train,
+    alt: "Séance du jour et coach IA dans AVENX",
     rotation: 8,
     offsetY: 36,
     offsetX: 24,
@@ -42,8 +43,8 @@ const heroPhones = [
     className: "absolute right-0 top-8 hidden sm:block",
   },
   {
-    src: "/screenshots/social.png",
-    alt: "Écran Social — communauté et classements",
+    src: SCREENSHOTS.social,
+    alt: "Communauté et classements dans AVENX",
     rotation: 12,
     offsetY: 48,
     offsetX: 8,

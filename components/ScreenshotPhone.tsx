@@ -57,7 +57,7 @@ function ScreenshotPhoneComponent({
             alt={alt}
             fill
             sizes="(max-width: 640px) 180px, 220px"
-            className="object-cover object-center"
+            className="object-cover object-top"
             priority={priority}
             loading={priority ? undefined : "lazy"}
           />

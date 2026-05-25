@@ -5,6 +5,7 @@ import { memo } from "react";
 import { ScreenshotPhone } from "@/components/ScreenshotPhone";
 import { FadeInView } from "@/components/ui/FadeInView";
 import { StoreButtons } from "@/components/ui/StoreButtons";
+import { SCREENSHOTS } from "@/lib/assets";
 
 function CTASectionComponent() {
   return (
@@ -39,8 +40,8 @@ function CTASectionComponent() {
 
               <div className="flex justify-center lg:justify-end">
                 <ScreenshotPhone
-                  src="/screenshots/profile.png"
-                  alt="Écran Profil — progression et badges AVENX"
+                  src={SCREENSHOTS.home}
+                  alt="Écran progression, badges et profil AVENX"
                   rotation={4}
                 />
               </div>

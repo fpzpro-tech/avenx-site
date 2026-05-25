@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { memo } from "react";
+import { BRAND_LOGO } from "@/lib/assets";
 
 type BrandLogoProps = {
   priority?: boolean;
@@ -9,7 +10,7 @@ type BrandLogoProps = {
 function BrandLogoComponent({ priority = false, className = "" }: BrandLogoProps) {
   return (
     <Image
-      src="/brand/logo.png"
+      src={BRAND_LOGO}
       alt="AVENX"
       width={120}
       height={36}

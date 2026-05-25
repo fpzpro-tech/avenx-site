@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { memo } from "react";
 import { ScreenshotPhone } from "@/components/ScreenshotPhone";
 import { FadeInView } from "@/components/ui/FadeInView";
+import { SCREENSHOTS } from "@/lib/assets";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
 const socialHighlights = [
@@ -27,8 +28,8 @@ function SocialSectionComponent() {
           <div className="order-2 lg:order-1 relative flex justify-center lg:justify-start">
             <div className="absolute -inset-8 rounded-full bg-avenx-primary/8 blur-3xl" />
             <ScreenshotPhone
-              src="/screenshots/social.png"
-              alt="Écran Social — communauté et classements"
+              src={SCREENSHOTS.social}
+              alt="Fil social, défis et classements dans AVENX"
               rotation={5}
             />
           </div>

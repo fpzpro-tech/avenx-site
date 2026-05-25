@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { memo } from "react";
 import { ScreenshotPhone } from "@/components/ScreenshotPhone";
 import { FadeInView } from "@/components/ui/FadeInView";
+import { SCREENSHOTS } from "@/lib/assets";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
 const coachCards = [
@@ -79,11 +80,10 @@ function CoachSectionComponent() {
           <div className="relative flex justify-center lg:justify-end">
             <div className="absolute -inset-8 rounded-full bg-avenx-purple/10 blur-3xl" />
             <ScreenshotPhone
-              src="/screenshots/train.png"
-              alt="Écran Train — coach IA adaptatif"
+              src={SCREENSHOTS.train}
+              alt="Séance du jour et coach IA dans AVENX"
               rotation={-4}
               className="relative"
-              priority={false}
             />
           </div>
         </div>

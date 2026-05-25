@@ -4,12 +4,13 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { memo, useRef } from "react";
 import { ScreenshotPhone } from "@/components/ScreenshotPhone";
 import { FadeInView } from "@/components/ui/FadeInView";
+import { SCREENSHOTS } from "@/lib/assets";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
 const spotCards = [
   {
     title: "Spots validés",
-    description: "Barres, parallettes et équipements vérifiés par la communauté.",
+    description: "Barres, parallèles et équipements validés par la communauté.",
     accent: "text-avenx-primary",
   },
   {
@@ -53,8 +54,8 @@ function SpotSectionComponent() {
             className="relative flex justify-center lg:justify-start"
           >
             <ScreenshotPhone
-              src="/screenshots/explorer.png"
-              alt="Écran Explorer — spots street workout autour de toi"
+              src={SCREENSHOTS.explorer}
+              alt="Carte et liste des spots street workout dans AVENX"
               rotation={-3}
               wide
             />

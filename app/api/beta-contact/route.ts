@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { formatBetaContactEmailBody, validateBetaContact } from "@/lib/beta-contact";
 
-const FROM_EMAIL = "AVENX Beta <onboarding@resend.dev>";
+const FROM_EMAIL = "AVENX Beta <beta@avenx.app>";
 const SUBJECT = "Nouveau bêta testeur AVENX";
 
 function errorResponse(error: string, status: number) {
@@ -55,7 +55,7 @@ export async function POST(request: Request) {
 
     const { error } = await resend.emails.send({
       from: FROM_EMAIL,
-      to: contactTo,
+      to: "fpzpro@gmail.com", // TODO test — remettre : to: contactTo,
       replyTo: data.email,
       subject: SUBJECT,
       text: formatBetaContactEmailBody(data),

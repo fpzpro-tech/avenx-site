@@ -1,71 +1,80 @@
-import { Resend } from "resend";
 import { NextResponse } from "next/server";
-import {
-  formatBetaContactEmailBody,
-  validateBetaContact,
-} from "@/lib/beta-contact";
+import { Resend } from "resend";
+import { formatBetaContactEmailBody, validateBetaContact } from "@/lib/beta-contact";
+
+const FROM_EMAIL = "AVENX Beta <onboarding@resend.dev>";
+const SUBJECT = "Nouveau bêta testeur AVENX";
+
+function errorResponse(error: string, status: number) {
+  return NextResponse.json({ ok: false as const, error }, { status });
+}
+
+function successResponse() {
+  return NextResponse.json({ ok: true as const });
+}
 
 export async function POST(request: Request) {
+  const resendApiKey = process.env.RESEND_API_KEY;
+  const contactTo = process.env.BETA_CONTACT_TO;
+
+  if (!resendApiKey) {
+    console.error("[beta-contact] RESEND_API_KEY is not configured");
+    return errorResponse(
+      "Configuration serveur incomplète : RESEND_API_KEY manquante.",
+      500,
+    );
+  }
+
+  if (!contactTo) {
+    console.error("[beta-contact] BETA_CONTACT_TO is not configured");
+    return errorResponse(
+      "Configuration serveur incomplète : BETA_CONTACT_TO manquante.",
+      500,
+    );
+  }
+
   let body: unknown;
 
   try {
     body = await request.json();
-  } catch {
-    return NextResponse.json({ error: "Requête invalide." }, { status: 400 });
+  } catch (err) {
+    console.error("[beta-contact] Invalid JSON body:", err);
+    return errorResponse("Requête invalide.", 400);
   }
 
   const validation = validateBetaContact(body);
 
   if (!validation.ok) {
-    return NextResponse.json({ error: validation.error }, { status: 400 });
+    return errorResponse(validation.error, 400);
   }
 
   const { data } = validation;
-  const apiKey = process.env.RESEND_API_KEY;
-
-  if (!apiKey) {
-    return NextResponse.json(
-      {
-        fallback: true,
-        error:
-          "Envoi automatique indisponible. Utilise ton client mail pour finaliser l'inscription.",
-      },
-      { status: 503 },
-    );
-  }
 
   try {
-    const resend = new Resend(apiKey);
-    const from = process.env.RESEND_FROM_EMAIL ?? "AVENX <onboarding@resend.dev>";
+    const resend = new Resend(resendApiKey);
 
     const { error } = await resend.emails.send({
-      from,
-      to: "contact@avenx.app",
+      from: FROM_EMAIL,
+      to: contactTo,
       replyTo: data.email,
-      subject: "Nouveau bêta testeur AVENX",
+      subject: SUBJECT,
       text: formatBetaContactEmailBody(data),
     });
 
     if (error) {
-      console.error("[beta-contact] Resend error:", error);
-      return NextResponse.json(
-        {
-          error:
-            "Impossible d'envoyer ton inscription pour le moment. Réessaie dans quelques minutes.",
-        },
-        { status: 500 },
+      console.error("[beta-contact] Resend send failed:", error);
+      return errorResponse(
+        "Impossible d'envoyer ton inscription pour le moment. Réessaie dans quelques minutes.",
+        500,
       );
     }
 
-    return NextResponse.json({ success: true });
+    return successResponse();
   } catch (err) {
     console.error("[beta-contact] Unexpected error:", err);
-    return NextResponse.json(
-      {
-        error:
-          "Une erreur inattendue s'est produite. Réessaie ou contacte-nous à contact@avenx.app.",
-      },
-      { status: 500 },
+    return errorResponse(
+      "Une erreur inattendue s'est produite. Réessaie ou contacte-nous à contact@avenx.app.",
+      500,
     );
   }
 }

@@ -2,7 +2,8 @@
 
 import { FormEvent, memo, useState } from "react";
 import { FadeInView } from "@/components/ui/FadeInView";
-import { buildBetaContactMailtoUrl, validateBetaContact } from "@/lib/beta-contact";
+import type { BetaContactApiResponse } from "@/lib/beta-contact";
+import { validateBetaContact } from "@/lib/beta-contact";
 
 const inputClass =
   "w-full rounded-xl border border-white/10 bg-avenx-bg px-4 py-3 text-avenx-snow placeholder:text-avenx-muted/50 transition focus:border-avenx-primary/50 focus:outline-none focus:ring-1 focus:ring-avenx-primary/50";
@@ -13,7 +14,8 @@ function BetaContactSectionComponent() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [consent, setConsent] = useState(false);
+  const [message, setMessage] = useState("");
+  const [wantsBeta, setWantsBeta] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -22,7 +24,8 @@ function BetaContactSectionComponent() {
     e.preventDefault();
     setError(null);
 
-    const validation = validateBetaContact({ firstName, lastName, email, consent });
+    const payload = { firstName, lastName, email, wantsBeta, message };
+    const validation = validateBetaContact(payload);
 
     if (!validation.ok) {
       setError(validation.error);
@@ -38,24 +41,15 @@ function BetaContactSectionComponent() {
         body: JSON.stringify(validation.data),
       });
 
-      const result = (await response.json()) as {
-        success?: boolean;
-        fallback?: boolean;
-        error?: string;
-      };
+      const result = (await response.json()) as BetaContactApiResponse;
 
-      if (response.ok && result.success) {
+      if (result.ok) {
         setSuccess(true);
         setFirstName("");
         setLastName("");
         setEmail("");
-        setConsent(false);
-        return;
-      }
-
-      if (response.status === 503 && result.fallback) {
-        window.location.href = buildBetaContactMailtoUrl(validation.data);
-        setSuccess(true);
+        setMessage("");
+        setWantsBeta(false);
         return;
       }
 
@@ -64,9 +58,9 @@ function BetaContactSectionComponent() {
           "Impossible d'envoyer ton inscription. Réessaie ou écris-nous à contact@avenx.app.",
       );
     } catch {
-      const mailto = buildBetaContactMailtoUrl(validation.data);
-      window.location.href = mailto;
-      setSuccess(true);
+      setError(
+        "Connexion impossible. Vérifie ton réseau et réessaie, ou écris-nous à contact@avenx.app.",
+      );
     } finally {
       setLoading(false);
     }
@@ -163,11 +157,28 @@ function BetaContactSectionComponent() {
                   />
                 </div>
 
+                <div>
+                  <label htmlFor="beta-message" className="mb-2 block text-sm font-medium text-avenx-snow">
+                    Message <span className="text-avenx-muted">(optionnel)</span>
+                  </label>
+                  <textarea
+                    id="beta-message"
+                    name="message"
+                    rows={3}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    className={`${inputClass} resize-y`}
+                    placeholder="Pourquoi tu veux rejoindre la bêta ?"
+                    disabled={loading}
+                  />
+                </div>
+
                 <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-white/5 bg-avenx-bg/60 px-4 py-3.5">
                   <input
                     type="checkbox"
-                    checked={consent}
-                    onChange={(e) => setConsent(e.target.checked)}
+                    name="wantsBeta"
+                    checked={wantsBeta}
+                    onChange={(e) => setWantsBeta(e.target.checked)}
                     disabled={loading}
                     className="mt-0.5 size-4 shrink-0 rounded border-white/20 bg-avenx-bg text-avenx-primary accent-avenx-primary focus:ring-avenx-primary/50"
                   />
@@ -177,7 +188,10 @@ function BetaContactSectionComponent() {
                 </label>
 
                 {error && (
-                  <p className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200" role="alert">
+                  <p
+                    className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200"
+                    role="alert"
+                  >
                     {error}
                   </p>
                 )}

@@ -4,11 +4,16 @@ export type BetaContactPayload = {
   firstName: string;
   lastName: string;
   email: string;
-  consent: boolean;
+  wantsBeta: boolean;
+  message: string;
 };
 
 export type BetaContactValidation =
   | { ok: true; data: BetaContactPayload }
+  | { ok: false; error: string };
+
+export type BetaContactApiResponse =
+  | { ok: true }
   | { ok: false; error: string };
 
 export function validateBetaContact(body: unknown): BetaContactValidation {
@@ -16,11 +21,12 @@ export function validateBetaContact(body: unknown): BetaContactValidation {
     return { ok: false, error: "Données invalides." };
   }
 
-  const { firstName, lastName, email, consent } = body as Record<string, unknown>;
+  const { firstName, lastName, email, wantsBeta, message } = body as Record<string, unknown>;
 
   const trimmedFirst = typeof firstName === "string" ? firstName.trim() : "";
   const trimmedLast = typeof lastName === "string" ? lastName.trim() : "";
   const trimmedEmail = typeof email === "string" ? email.trim() : "";
+  const trimmedMessage = typeof message === "string" ? message.trim() : "";
 
   if (!trimmedFirst || !trimmedLast || !trimmedEmail) {
     return { ok: false, error: "Merci de remplir tous les champs obligatoires." };
@@ -30,7 +36,7 @@ export function validateBetaContact(body: unknown): BetaContactValidation {
     return { ok: false, error: "Adresse email invalide." };
   }
 
-  if (consent !== true) {
+  if (wantsBeta !== true) {
     return {
       ok: false,
       error: "Tu dois confirmer ta candidature en cochant la case bêta testeur.",
@@ -43,7 +49,8 @@ export function validateBetaContact(body: unknown): BetaContactValidation {
       firstName: trimmedFirst,
       lastName: trimmedLast,
       email: trimmedEmail,
-      consent: true,
+      wantsBeta: true,
+      message: trimmedMessage,
     },
   };
 }
@@ -55,17 +62,17 @@ export function formatBetaContactEmailBody(data: BetaContactPayload): string {
     timeStyle: "short",
   });
 
-  return [
+  const lines = [
     `Prénom : ${data.firstName}`,
     `Nom : ${data.lastName}`,
     `Email : ${data.email}`,
-    `Consentement bêta testeur : Oui`,
+    `Consentement bêta testeur : ${data.wantsBeta ? "Oui" : "Non"}`,
     `Date : ${date}`,
-  ].join("\n");
-}
+  ];
 
-export function buildBetaContactMailtoUrl(data: BetaContactPayload): string {
-  const subject = encodeURIComponent("Nouveau bêta testeur AVENX");
-  const body = encodeURIComponent(formatBetaContactEmailBody(data));
-  return `mailto:contact@avenx.app?subject=${subject}&body=${body}`;
+  if (data.message) {
+    lines.push(`Message : ${data.message}`);
+  }
+
+  return lines.join("\n");
 }

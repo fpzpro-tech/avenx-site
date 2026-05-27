@@ -48,7 +48,7 @@ function NavbarComponent() {
         </nav>
 
         <a
-          href="#telecharger"
+          href="#beta-form"
           className="hidden rounded-full bg-avenx-primary px-5 py-2.5 text-sm font-semibold text-avenx-bg transition hover:bg-avenx-secondary md:inline-flex"
         >
           Télécharger
@@ -87,7 +87,7 @@ function NavbarComponent() {
             ))}
             <li>
               <a
-                href="#telecharger"
+                href="#beta-form"
                 className="mt-2 block rounded-full bg-avenx-primary px-4 py-3 text-center font-semibold text-avenx-bg"
                 onClick={() => setMenuOpen(false)}
               >

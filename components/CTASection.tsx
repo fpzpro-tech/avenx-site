@@ -22,7 +22,7 @@ function CTASectionComponent() {
               </p>
 
               <Link
-                href="mailto:beta@avenx.app?subject=Rejoindre%20la%20b%C3%AAta%20AVENX"
+                href="#beta-form"
                 className="mt-9 inline-flex rounded-full bg-avenx-primary px-8 py-3.5 text-sm font-semibold text-avenx-bg transition hover:bg-avenx-secondary"
               >
                 Rejoindre la bêta AVENX

@@ -44,7 +44,7 @@ function HeroSectionComponent() {
 
             <motion.div variants={fadeUp} className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
-                href="mailto:beta@avenx.app?subject=B%C3%AAta%20fondateur%20AVENX"
+                href="#beta-form"
                 className="inline-flex items-center justify-center rounded-full bg-avenx-primary px-7 py-3.5 text-sm font-semibold text-avenx-bg transition hover:bg-avenx-secondary"
               >
                 Rejoindre la bêta

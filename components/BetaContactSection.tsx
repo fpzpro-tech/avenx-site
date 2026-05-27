@@ -67,7 +67,7 @@ function BetaContactSectionComponent() {
   }
 
   return (
-    <section id="beta-contact" className="scroll-mt-24 border-t border-white/5 py-20 sm:py-28">
+    <section id="beta-form" className="scroll-mt-32 border-t border-white/5 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <FadeInView className="mx-auto max-w-xl">
           <div className="text-center">

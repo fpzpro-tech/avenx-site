@@ -8,3 +8,5 @@ export const SCREENSHOTS = {
 } as const;
 
 export const BRAND_LOGO = "/brand/logo.png" as const;
+
+export const TESTFLIGHT_URL = "https://testflight.apple.com/join/etHuwAxs" as const;

@@ -9,6 +9,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { Navbar } from "@/components/Navbar";
 import { SocialSection } from "@/components/SocialSection";
 import { SpotSection } from "@/components/SpotSection";
+import { TESTFLIGHT_URL } from "@/lib/assets";
 
 export default function Home() {
   return (
@@ -30,9 +31,19 @@ export default function Home() {
       <footer className="border-t border-white/5 bg-avenx-card/40">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <BrandLogo />
-          <p className="text-sm text-avenx-muted">
-            © {new Date().getFullYear()} AVENX — Street workout. Spots. Coach IA.
-          </p>
+          <div className="flex flex-col items-start gap-2 sm:items-end">
+            <a
+              href={TESTFLIGHT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-avenx-muted transition hover:text-avenx-green"
+            >
+              Bêta iOS — TestFlight
+            </a>
+            <p className="text-sm text-avenx-muted">
+              © {new Date().getFullYear()} AVENX — Street workout. Spots. Coach IA.
+            </p>
+          </div>
         </div>
       </footer>
     </div>

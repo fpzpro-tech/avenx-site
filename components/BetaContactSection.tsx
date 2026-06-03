@@ -4,6 +4,7 @@ import { FormEvent, memo, useState } from "react";
 import { FadeInView } from "@/components/ui/FadeInView";
 import type { BetaContactApiResponse } from "@/lib/beta-contact";
 import { validateBetaContact } from "@/lib/beta-contact";
+import { TESTFLIGHT_URL } from "@/lib/assets";
 
 const inputClass =
   "w-full rounded-xl border border-white/10 bg-avenx-bg px-4 py-3 text-avenx-snow placeholder:text-avenx-muted/50 transition focus:border-avenx-primary/50 focus:outline-none focus:ring-1 focus:ring-avenx-primary/50";
@@ -82,7 +83,21 @@ function BetaContactSectionComponent() {
             </p>
           </div>
 
-          <div className="glass-card glow-cyan-sm mt-10 rounded-3xl border border-white/8 bg-avenx-card p-6 sm:p-8">
+          <div className="mt-8 rounded-2xl border border-avenx-green/30 bg-avenx-green/10 px-6 py-6 text-center sm:px-8">
+            <p className="text-base font-semibold text-avenx-snow sm:text-lg">
+              Tu as un iPhone ? Installe l&apos;app maintenant
+            </p>
+            <a
+              href={TESTFLIGHT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center justify-center rounded-full bg-avenx-green px-6 py-3 text-sm font-semibold text-avenx-bg transition hover:brightness-110"
+            >
+              Ouvrir TestFlight →
+            </a>
+          </div>
+
+          <div className="glass-card glow-cyan-sm mt-8 rounded-3xl border border-white/8 bg-avenx-card p-6 sm:p-8">
             {success ? (
               <div
                 className="rounded-2xl border border-avenx-green/30 bg-avenx-green/10 px-6 py-10 text-center"

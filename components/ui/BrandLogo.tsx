@@ -4,19 +4,14 @@ import { BRAND_LOGO } from "@/lib/assets";
 
 type BrandLogoProps = {
   priority?: boolean;
-  className?: string;
 };
 
-function BrandLogoComponent({ priority = false, className = "" }: BrandLogoProps) {
+function BrandLogoComponent({ priority = false }: BrandLogoProps) {
   return (
-    <Image
-      src={BRAND_LOGO}
-      alt="AVENX"
-      width={120}
-      height={36}
-      className={`h-auto max-h-9 w-auto object-contain ${className}`}
-      priority={priority}
-    />
+    <a className="brand" href="#top" aria-label="AVENX, retour en haut">
+      <Image src={BRAND_LOGO} alt="" width={34} height={34} priority={priority} />
+      AVENX
+    </a>
   );
 }
 

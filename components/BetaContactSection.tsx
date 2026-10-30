@@ -1,13 +1,9 @@
 "use client";
 
 import { FormEvent, memo, useState } from "react";
-import { FadeInView } from "@/components/ui/FadeInView";
 import type { BetaContactApiResponse } from "@/lib/beta-contact";
 import { validateBetaContact } from "@/lib/beta-contact";
 import { TESTFLIGHT_URL } from "@/lib/assets";
-
-const inputClass =
-  "w-full rounded-xl border border-white/10 bg-avenx-bg px-4 py-3 text-avenx-snow placeholder:text-avenx-muted/50 transition focus:border-avenx-primary/50 focus:outline-none focus:ring-1 focus:ring-avenx-primary/50";
 
 const SUCCESS_MESSAGE = "Merci, tu fais partie des premiers athlètes AVENX.";
 
@@ -68,160 +64,108 @@ function BetaContactSectionComponent() {
   }
 
   return (
-    <section id="beta-form" className="scroll-mt-32 border-t border-white/5 py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <FadeInView className="mx-auto max-w-xl">
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-avenx-primary">
-              Bêta fondateurs
-            </p>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-avenx-snow sm:text-3xl">
-              Rejoins la bêta AVENX
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-avenx-muted sm:text-base">
-              Laisse tes coordonnées pour obtenir un accès prioritaire et le statut fondateur.
-            </p>
-          </div>
-
-          <div className="mt-8 rounded-2xl border border-avenx-green/30 bg-avenx-green/10 px-6 py-6 text-center sm:px-8">
-            <p className="text-base font-semibold text-avenx-snow sm:text-lg">
-              Tu as un iPhone ? Installe l&apos;app maintenant
-            </p>
-            <a
-              href={TESTFLIGHT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center justify-center rounded-full bg-avenx-green px-6 py-3 text-sm font-semibold text-avenx-bg transition hover:brightness-110"
-            >
-              Ouvrir TestFlight →
+    <section className="join" id="beta">
+      <div className="wrap join-grid">
+        <div>
+          <h2>Rejoins la bêta.</h2>
+          <p className="body">
+            Tu as un iPhone ? Installe l&apos;app tout de suite avec TestFlight, et invite tes potes
+            avec le même lien : à plusieurs, c&apos;est là que l&apos;app prend tout son sens.
+          </p>
+          <div className="testflight">
+            <a className="btn" href={TESTFLIGHT_URL} target="_blank" rel="noopener noreferrer">
+              Ouvrir TestFlight
             </a>
+            <p className="fine">Sur Android ? Laisse tes coordonnées, on te prévient.</p>
           </div>
+        </div>
 
-          <div className="glass-card glow-cyan-sm mt-8 rounded-3xl border border-white/8 bg-avenx-card p-6 sm:p-8">
-            {success ? (
-              <div
-                className="rounded-2xl border border-avenx-green/30 bg-avenx-green/10 px-6 py-10 text-center"
-                role="status"
-              >
-                <p className="text-lg font-semibold text-avenx-snow">{SUCCESS_MESSAGE}</p>
-                <p className="mt-2 text-sm text-avenx-muted">
-                  On te recontacte très vite pour ton accès bêta.
-                </p>
-                <button
-                  type="button"
-                  className="mt-6 text-sm font-medium text-avenx-primary transition hover:text-avenx-secondary"
-                  onClick={() => setSuccess(false)}
-                >
-                  Envoyer une autre candidature
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <div>
-                    <label htmlFor="beta-first-name" className="mb-2 block text-sm font-medium text-avenx-snow">
-                      Prénom
-                    </label>
-                    <input
-                      id="beta-first-name"
-                      name="firstName"
-                      type="text"
-                      required
-                      autoComplete="given-name"
-                      value={firstName}
-                      onChange={(e) => setFirstName(e.target.value)}
-                      className={inputClass}
-                      placeholder="Alex"
-                      disabled={loading}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="beta-last-name" className="mb-2 block text-sm font-medium text-avenx-snow">
-                      Nom
-                    </label>
-                    <input
-                      id="beta-last-name"
-                      name="lastName"
-                      type="text"
-                      required
-                      autoComplete="family-name"
-                      value={lastName}
-                      onChange={(e) => setLastName(e.target.value)}
-                      className={inputClass}
-                      placeholder="Martin"
-                      disabled={loading}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="beta-email" className="mb-2 block text-sm font-medium text-avenx-snow">
-                    Email
-                  </label>
-                  <input
-                    id="beta-email"
-                    name="email"
-                    type="email"
-                    required
-                    autoComplete="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className={inputClass}
-                    placeholder="ton@email.com"
-                    disabled={loading}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="beta-message" className="mb-2 block text-sm font-medium text-avenx-snow">
-                    Message <span className="text-avenx-muted">(optionnel)</span>
-                  </label>
-                  <textarea
-                    id="beta-message"
-                    name="message"
-                    rows={3}
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    className={`${inputClass} resize-y`}
-                    placeholder="Pourquoi tu veux rejoindre la bêta ?"
-                    disabled={loading}
-                  />
-                </div>
-
-                <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-white/5 bg-avenx-bg/60 px-4 py-3.5">
-                  <input
-                    type="checkbox"
-                    name="wantsBeta"
-                    checked={wantsBeta}
-                    onChange={(e) => setWantsBeta(e.target.checked)}
-                    disabled={loading}
-                    className="mt-0.5 size-4 shrink-0 rounded border-white/20 bg-avenx-bg text-avenx-primary accent-avenx-primary focus:ring-avenx-primary/50"
-                  />
-                  <span className="text-sm leading-relaxed text-avenx-muted">
-                    Oui, je veux devenir bêta testeur fondateur
-                  </span>
-                </label>
-
-                {error && (
-                  <p
-                    className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200"
-                    role="alert"
-                  >
-                    {error}
-                  </p>
-                )}
-
-                <button
-                  type="submit"
+        {success ? (
+          <div className="sent" role="status">
+            <p>
+              <b>{SUCCESS_MESSAGE}</b> On te recontacte très vite pour ton accès bêta.
+            </p>
+            <button type="button" className="link" onClick={() => setSuccess(false)}>
+              Envoyer une autre inscription
+            </button>
+          </div>
+        ) : (
+          <form id="beta-form" onSubmit={handleSubmit} noValidate>
+            <div className="row2">
+              <label htmlFor="beta-first-name">
+                Prénom
+                <input
+                  id="beta-first-name"
+                  name="firstName"
+                  type="text"
+                  required
+                  autoComplete="given-name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                   disabled={loading}
-                  className="w-full rounded-full bg-avenx-primary px-6 py-3.5 text-sm font-semibold text-avenx-bg transition hover:bg-avenx-secondary disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
-                >
-                  {loading ? "Envoi en cours…" : "Rejoindre la bêta AVENX"}
-                </button>
-              </form>
+                />
+              </label>
+              <label htmlFor="beta-last-name">
+                Nom
+                <input
+                  id="beta-last-name"
+                  name="lastName"
+                  type="text"
+                  required
+                  autoComplete="family-name"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  disabled={loading}
+                />
+              </label>
+            </div>
+            <label htmlFor="beta-email">
+              Email
+              <input
+                id="beta-email"
+                name="email"
+                type="email"
+                required
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="toi@exemple.fr"
+                disabled={loading}
+              />
+            </label>
+            <label htmlFor="beta-message">
+              Message (optionnel)
+              <textarea
+                id="beta-message"
+                name="message"
+                rows={3}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Ton spot, ton niveau, ton téléphone…"
+                disabled={loading}
+              />
+            </label>
+            <label className="check" htmlFor="beta-wants">
+              <input
+                id="beta-wants"
+                type="checkbox"
+                name="wantsBeta"
+                checked={wantsBeta}
+                onChange={(e) => setWantsBeta(e.target.checked)}
+                disabled={loading}
+              />
+              <span>Oui, je veux devenir bêta testeur fondateur</span>
+            </label>
+            {error && (
+              <p className="form-error" role="alert">
+                {error}
+              </p>
             )}
-          </div>
-        </FadeInView>
+            <button type="submit" className="btn" disabled={loading}>
+              {loading ? "Envoi en cours…" : "Rejoindre la bêta AVENX"}
+            </button>
+          </form>
+        )}
       </div>
     </section>
   );

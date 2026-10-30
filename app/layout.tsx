@@ -1,33 +1,35 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Archivo, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
+  axes: ["wdth"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  weight: ["400", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "AVENX — Trouve ton spot. Progresse. Reviens demain.",
+  title: "AVENX : les spots de street workout et ceux qui s'y entraînent",
   description:
-    "Découvre les spots street workout autour de toi, entraîne-toi avec des séances adaptées et progresse avec un coach IA qui apprend de ton niveau.",
+    "Trouve les spots de street workout autour de toi, suis les séances de tes potes, gagne de l'XP et grimpe au classement de ton spot.",
   keywords: [
     "AVENX",
     "street workout",
     "calisthenics",
     "spots",
-    "coach IA",
-    "communauté fitness",
+    "communauté street workout",
+    "classement",
   ],
   openGraph: {
-    title: "AVENX — Trouve ton spot. Progresse. Reviens demain.",
+    title: "AVENX : le spot est à deux rues, ta team aussi",
     description:
-      "Spots, séances adaptées et communauté street workout — le compagnon premium pour progresser dehors.",
+      "Les spots de street workout autour de toi, le fil de tes potes, l'XP et le classement de ton spot.",
     type: "website",
     locale: "fr_FR",
     siteName: "AVENX",
@@ -40,8 +42,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="min-h-screen bg-avenx-bg antialiased">{children}</body>
+    <html lang="fr" className={`${archivo.variable} ${jetbrainsMono.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

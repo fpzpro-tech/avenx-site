@@ -10,10 +10,20 @@ export type BrevoSyncResult = { ok: true } | { ok: false; skipped: boolean; erro
  */
 export async function addBetaTesterToBrevo(data: BetaContactPayload): Promise<BrevoSyncResult> {
   const apiKey = process.env.BREVO_API_KEY;
-  const listId = Number(process.env.BREVO_BETA_LIST_ID);
+  // Tolère un ID saisi avec un « # » ou des espaces (ex. « #3 »).
+  const rawListId = process.env.BREVO_BETA_LIST_ID ?? "";
+  const listId = Number(rawListId.replace(/[^0-9]/g, ""));
 
-  if (!apiKey || !Number.isInteger(listId) || listId <= 0) {
-    return { ok: false, skipped: true, error: "BREVO_API_KEY ou BREVO_BETA_LIST_ID manquante" };
+  if (!apiKey) {
+    return { ok: false, skipped: true, error: "BREVO_API_KEY manquante" };
+  }
+
+  if (!Number.isInteger(listId) || listId <= 0) {
+    return {
+      ok: false,
+      skipped: true,
+      error: `BREVO_BETA_LIST_ID invalide (${rawListId ? "valeur non numérique" : "manquante"})`,
+    };
   }
 
   const response = await fetch(BREVO_CONTACTS_URL, {

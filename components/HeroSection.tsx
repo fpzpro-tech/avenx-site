@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Phone } from "@/components/ui/Phone";
-import { SCREENSHOTS, TESTFLIGHT_URL } from "@/lib/assets";
+import { BETA_LINK_PROPS, SCREENSHOTS } from "@/lib/assets";
 
 function HeroSectionComponent() {
   return (
@@ -23,7 +23,7 @@ function HeroSectionComponent() {
             seul.
           </p>
           <div className="cta-row">
-            <a className="btn" href={TESTFLIGHT_URL} target="_blank" rel="noopener noreferrer">
+            <a className="btn" {...BETA_LINK_PROPS}>
               Rejoindre la bêta iOS
             </a>
             <a className="link" href="#communaute">

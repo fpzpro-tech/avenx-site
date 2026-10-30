@@ -1,51 +1,44 @@
 import { BetaContactSection } from "@/components/BetaContactSection";
-import { CTASection } from "@/components/CTASection";
-import { BrandLogo } from "@/components/ui/BrandLogo";
-import { CoachSection } from "@/components/CoachSection";
-import { FounderSection } from "@/components/FounderSection";
-import { FeatureGrid } from "@/components/FeatureGrid";
-import { FutureSection } from "@/components/FutureSection";
+import { CommunitySection } from "@/components/CommunitySection";
+import { FaqSection } from "@/components/FaqSection";
 import { HeroSection } from "@/components/HeroSection";
 import { Navbar } from "@/components/Navbar";
-import { SocialSection } from "@/components/SocialSection";
+import { ProblemSection } from "@/components/ProblemSection";
+import { ProgramSection } from "@/components/ProgramSection";
 import { SpotSection } from "@/components/SpotSection";
+import { StepsSection } from "@/components/StepsSection";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 import { TESTFLIGHT_URL } from "@/lib/assets";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <>
       <Navbar />
 
-      <main>
+      <main id="top">
         <HeroSection />
-        <FounderSection />
-        <FeatureGrid />
+        <ProblemSection />
         <SpotSection />
-        <CoachSection />
-        <SocialSection />
-        <FutureSection />
-        <CTASection />
+        <CommunitySection />
+        <ProgramSection />
+        <StepsSection />
+        <FaqSection />
         <BetaContactSection />
       </main>
 
-      <footer className="border-t border-white/5 bg-avenx-card/40">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+      <footer>
+        <div className="wrap">
           <BrandLogo />
-          <div className="flex flex-col items-start gap-2 sm:items-end">
-            <a
-              href={TESTFLIGHT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-avenx-muted transition hover:text-avenx-green"
-            >
-              Bêta iOS — TestFlight
+          <span>© {new Date().getFullYear()} AVENX</span>
+          <nav aria-label="Pied de page">
+            <a href="#faq">Questions</a>
+            <a href={TESTFLIGHT_URL} target="_blank" rel="noopener noreferrer">
+              Bêta iOS
             </a>
-            <p className="text-sm text-avenx-muted">
-              © {new Date().getFullYear()} AVENX — Street workout. Spots. Coach IA.
-            </p>
-          </div>
+            <a href="mailto:contact@avenx.app">contact@avenx.app</a>
+          </nav>
         </div>
       </footer>
-    </div>
+    </>
   );
 }

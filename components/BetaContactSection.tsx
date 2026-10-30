@@ -3,7 +3,7 @@
 import { FormEvent, memo, useState } from "react";
 import type { BetaContactApiResponse } from "@/lib/beta-contact";
 import { validateBetaContact } from "@/lib/beta-contact";
-import { TESTFLIGHT_URL } from "@/lib/assets";
+import { TESTFLIGHT_OPEN, TESTFLIGHT_URL } from "@/lib/assets";
 
 const SUCCESS_MESSAGE = "Merci, tu fais partie des premiers athlètes AVENX.";
 
@@ -12,7 +12,7 @@ function BetaContactSectionComponent() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [wantsBeta, setWantsBeta] = useState(false);
+  const [wantsBeta, setWantsBeta] = useState(!TESTFLIGHT_OPEN);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -46,7 +46,7 @@ function BetaContactSectionComponent() {
         setLastName("");
         setEmail("");
         setMessage("");
-        setWantsBeta(false);
+        setWantsBeta(!TESTFLIGHT_OPEN);
         return;
       }
 
@@ -68,16 +68,30 @@ function BetaContactSectionComponent() {
       <div className="wrap join-grid">
         <div>
           <h2>Rejoins la bêta.</h2>
-          <p className="body">
-            Tu as un iPhone ? Installe l&apos;app tout de suite avec TestFlight, et invite tes potes
-            avec le même lien : à plusieurs, c&apos;est là que l&apos;app prend tout son sens.
-          </p>
-          <div className="testflight">
-            <a className="btn" href={TESTFLIGHT_URL} target="_blank" rel="noopener noreferrer">
-              Ouvrir TestFlight
-            </a>
-            <p className="fine">Sur Android ? Laisse tes coordonnées, on te prévient.</p>
-          </div>
+          {TESTFLIGHT_OPEN ? (
+            <>
+              <p className="body">
+                Tu as un iPhone ? Installe l&apos;app tout de suite avec TestFlight, et invite tes
+                potes avec le même lien : à plusieurs, c&apos;est là que l&apos;app prend tout son
+                sens.
+              </p>
+              <div className="testflight">
+                <a className="btn" href={TESTFLIGHT_URL} target="_blank" rel="noopener noreferrer">
+                  Ouvrir TestFlight
+                </a>
+                <p className="fine">Sur Android ? Laisse tes coordonnées, on te prévient.</p>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="body">
+                Laisse tes coordonnées : on t&apos;envoie ton accès TestFlight par mail dès
+                l&apos;ouverture des prochaines places. Invite tes potes à s&apos;inscrire aussi :
+                à plusieurs, c&apos;est là que l&apos;app prend tout son sens.
+              </p>
+              <p className="fine">Sur Android ? Inscris-toi aussi, on te prévient au lancement.</p>
+            </>
+          )}
         </div>
 
         {success ? (

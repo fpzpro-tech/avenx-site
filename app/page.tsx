@@ -8,7 +8,7 @@ import { ProgramSection } from "@/components/ProgramSection";
 import { SpotSection } from "@/components/SpotSection";
 import { StepsSection } from "@/components/StepsSection";
 import { BrandLogo } from "@/components/ui/BrandLogo";
-import { TESTFLIGHT_URL } from "@/lib/assets";
+import { BETA_LINK_PROPS } from "@/lib/assets";
 
 export default function Home() {
   return (
@@ -32,7 +32,7 @@ export default function Home() {
           <span>© {new Date().getFullYear()} AVENX</span>
           <nav aria-label="Pied de page">
             <a href="#faq">Questions</a>
-            <a href={TESTFLIGHT_URL} target="_blank" rel="noopener noreferrer">
+            <a {...BETA_LINK_PROPS}>
               Bêta iOS
             </a>
             <a href="mailto:contact@avenx.app">contact@avenx.app</a>
